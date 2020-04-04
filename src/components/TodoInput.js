@@ -2,7 +2,7 @@ import React from "react";
 
 class TodoInput extends React.Component {
   render() {
-    return <div> Hello from TodoInput </div>;
+    return <div>TodoInput </div>;
   }
 }
 
