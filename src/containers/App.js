@@ -5,21 +5,31 @@ import TodoInput from "../components/TodoInput";
 
 class App extends React.Component {
   state = {
-    items: [
-      { id: 1, title: "wakeup" },
-      { id: 2, title: "wash myself" },
-      { id: 3, title: "make breakfast" }
-    ],
+    items: [],
     id: uuidv4(),
     item: "",
     editItem: false
   };
   // initial states
   handleChange = e => {
-    console.log("handle change");
+    this.setState({ item: e.target.value });
   };
   handleSubmit = e => {
-    console.log("handle submit");
+    e.preventDefault();
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item
+    };
+    const updatedItems = [...this.state.items, newItem];
+    this.setState(
+      {
+        items: updatedItems,
+        item: "",
+        id: uuidv4(),
+        editItem: false
+      },
+      () => console.log(this.state)
+    );
   };
   clearList = () => {
     console.log("clear list");
